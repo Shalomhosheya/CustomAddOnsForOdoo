@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_hospital_appointment_calendar" model="ir.ui.view">
+        <field name="name">hospital.appointment.calendar.view</field>
+        <field name="model">hospital_management_system.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointment Calendar" date_start="date_appointment" color="state">
+                <field name="patient_id"/>
+                <field name="reference"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="action_hospital_appointment_calendar" model="ir.actions.act_window">
+        <field name="name">Appointment Calendar</field>
+        <field name="res_model">hospital_management_system.appointment</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="view_hospital_appointment_calendar"/>
+    </record>
+
+  </data>
+</odoo>

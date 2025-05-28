@@ -1,0 +1,10 @@
+/* static/src/css/pos_custom.css */
+.o_pos_note_button {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    transition: all 150ms ease;
+}
+
+.o_pos_note_button:hover {
+    background-color: #e9ecef;
+}

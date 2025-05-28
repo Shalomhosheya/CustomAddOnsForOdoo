@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="customer_receipt_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="text-align: center;">Customer Receipt</h2>
+                    <div style="margin-top: 20px;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Customer Code</th>
+                                <td><span t-field="docs.customer_code"/></td>
+                            </tr>
+                            <tr>
+                                <th>Customer Name</th>
+                                <td><span t-field="docs.customer_name"/></td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td><span t-field="docs.date"/></td>
+                            </tr>
+                            <tr>
+                                <th>Size</th>
+                                <td><span t-field="docs.size"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+     <report
+      id="action_report_receipt"
+      model="cf.receipt"
+      string="Customer Receipt"
+      report_type="qweb-pdf"
+      name="custom_form.report_customer_receipt"
+      file="custom_form.report_customer_receipt"
+      print_report_name="'Receipt - %s' % (object.customer_name)"
+     />
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+  <template id="external_layout_custom" inherit_id="web.layout">
+    <xpath expr="//t[@t-set='html_content']" position="replace">
+      <t t-set="html_content">
+        <div style="padding: 40px; font-family: 'Arial';">
+          <h1 style="color: navy;">This is my custom layout</h1>
+          <p>Rendered inside web.layout successfully</p>
+        </div>
+      </t>
+    </xpath>
+  </template>
+</odoo>

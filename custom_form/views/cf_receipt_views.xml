@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_cf_receipt_form" model="ir.ui.view">
+        <field name="name">cf.receipt.form</field>
+        <field name="model">cf.receipt</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="print_receipt" string="Print Receipt" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Customer Receipt</h1>
+                    </div>
+                    <group>
+                        <field name="customer_code"/>
+                        <field name="customer_name"/>
+                        <field name="date"/>
+                        <field name="size"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="customer_receipt_report" model="ir.actions.report">
+     <field name="name">Customer Receipt</field>
+     <field name="model">cf.receipt</field>
+     <field name="report_type">qweb-pdf</field>
+     <field name="report_name">custom_form.customer_receipt_template</field>
+    </record>
+
+</odoo>

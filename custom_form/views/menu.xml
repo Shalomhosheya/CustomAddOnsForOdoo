@@ -1,0 +1,14 @@
+<odoo>
+    <menuitem id="menu_customForm_root"
+              name="Custom Form"
+              sequence="10"
+              />
+
+    <menuitem id="menu_customForm_customer"
+              name="Customer"
+              parent="menu_customForm_root"
+              action="action_cf_customer"/>
+
+
+
+</odoo>

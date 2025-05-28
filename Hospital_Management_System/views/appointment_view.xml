@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Define the report action first -->
+<record id="action_appointment_receipt" model="ir.actions.report">
+    <field name="name">Appointment Receipt</field>
+    <field name="model">hospital_management_system.appointment</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">hospital_management_system.report_appointment_receipt</field>
+    <field name="binding_model_id" ref="model_hospital_management_system_appointment"/>
+    <field name="binding_type">report</field>
+</record>
+    <!-- Action Window -->
+    <record id="action_hos_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">hospital_management_system.appointment</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Create a new Appointment
+            </p>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="view_hospital_appointment_tree">
+        <field name="name">Hospital.appointment.tree</field>
+        <field name="model">hospital_management_system.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments">
+                <field name="reference"/>
+                <field name="patient_id"/>
+                <field name="date_appointment" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="view_hospital_appointment_form">
+        <field name="name">Hospital.appointment.form</field>
+        <field name="model">hospital_management_system.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_ongoing" type="object" string="Ongoing" invisible="state != 'confirmed'" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done" invisible="state != 'ongoing' " class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state == 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,done"/>
+                    
+                    <button name="%(action_appointment_receipt)d"
+                        string="Print Receipt"
+                        type="action"
+                        class="btn-primary"
+                        context="{'active_ids': [active_id]}" invisible="state != 'done' and state != 'cancel' "/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference" readonly="True"/>
+                            <field name="patient_id"/>
+                            <field name="date_appointment"/>
+                            <field name="duration"/>
+                        </group>
+                        <group>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+
+                <sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Calendar View -->
+    <record id="view_hospital_appointment_calendar" model="ir.ui.view">
+        <field name="name">hospital.appointment.calendar</field>
+        <field name="model">hospital_management_system.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="date_appointment" color="state">
+                <field name="reference"/>
+                <field name="patient_id"/>
+            </calendar>
+        </field>
+    </record>
+
+</odoo>

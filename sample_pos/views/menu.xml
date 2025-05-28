@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Root Menu -->
+        <menuitem id="menu_sample_pos_root"
+                  name="Sample POS"
+                  sequence="10"/>
+
+        <!-- POS Orders Menu -->
+        <menuitem id="menu_sample_pos_orders"
+                  name="POS Orders"
+                  parent="menu_sample_pos_root"
+                  action="sample_pos.action_sample_pos_orders"
+                  sequence="20"/>
+
+        <!-- New Menu Item -->
+        <menuitem id="menu_sample_pos_custom_fields"
+                  name="Custom Fields"
+                  parent="menu_sample_pos_orders"
+                  sequence="30"/>
+        
+        <!-- Action for the New Menu Item -->
+        <record id="action_sample_pos_orders" model="ir.actions.act_window">
+            <field name="name">POS Orders</field>
+            <field name="res_model">pos.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+    </data>
+</odoo>

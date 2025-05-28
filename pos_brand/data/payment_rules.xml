@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Record rule for non-admin users to see only cash payments in account.move -->
+        <record id="account_move_cash_only_rule" model="ir.rule">
+            <field name="name">Account Move: Non-Admin Cash Only</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="domain_force">[('payment_types', '=', 'cash')]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Record rule for non-admin users to see only cash payments in sale.order -->
+        <record id="sale_order_cash_only_rule" model="ir.rule">
+            <field name="name">Sale Order: Non-Admin Cash Only</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="domain_force">[('payment_types', '=', 'cash')]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin users can see all records (no restrictions) -->
+        <record id="account_move_admin_rule" model="ir.rule">
+            <field name="name">Account Move: Admin All Access</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="sale_order_admin_rule" model="ir.rule">
+            <field name="name">Sale Order: Admin All Access</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

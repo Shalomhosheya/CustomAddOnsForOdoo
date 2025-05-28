@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define the action to open POS Orders -->
+    <record id="action_sample_pos_orders" model="ir.actions.act_window">
+        <field name="name">POS Orders</field>
+        <field name="res_model">pos.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pos_order_tree"/>
+    </record>
+
+    <!-- Define the tree view for POS Orders -->
+   <record id="action_sample_pos_orders" model="ir.actions.act_window">
+    <field name="name">POS Orders</field>
+    <field name="res_model">pos.order</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="view_pos_order_tree"/>
+   </record>
+
+
+    <!-- Define the form view for POS Orders -->
+    <record id="view_pos_order_form" model="ir.ui.view">
+        <field name="name">pos.order.form</field>
+        <field name="model">pos.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_order"/>
+                        <field name="amount_total"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

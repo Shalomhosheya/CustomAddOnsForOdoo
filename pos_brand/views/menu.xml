@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="sale_pos_brands" name="Custom Brands" />
+    <menuitem id="sale_pos_brands_tree" parent="sale_pos_brands" name="Brands" action="action_product_brand"/>
+    <menuitem id="sale_pos_product" parent="sale_pos_brands" name="POS Product" action="action_POS_product"/>
+    <menuitem id="sale_pos_product_order" parent="sale_pos_product" name="POS Order" action="action_POS_order"/>
+
+</odoo>

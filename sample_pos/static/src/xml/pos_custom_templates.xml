@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="CustomButton" owl="1">
+        <!-- Use POS-specific button classes for consistent styling -->
+        <button class="btn btn-light btn-lg o_pos_note_button" t-on-click="onClick">
+            <i class="fa fa-edit mr-2" role="img"/>
+            <span t-esc="env._t('Add Note')"/>
+        </button>
+    </t>
+</templates>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+    
+    <!-- Add "Brand" column to the invoice table header -->
+    <xpath expr="//thead/tr/th[1]" position="after">
+      <th class="text-left">Brand</th>
+    </xpath>
+
+    <!-- Add brand value for each invoice line -->
+    <xpath expr="//tbody/tr/td[1]" position="after">
+      <td class="text-left">
+        <span t-field="line.product_brand_id.name"/>
+      </td>
+    </xpath>
+
+  </template>
+</odoo>

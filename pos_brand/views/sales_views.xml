@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit sale order line tree view (order lines table) -->
+    <record id="view_order_line_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.line.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add brand column to order lines table -->
+    <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="after">
+             <field name="product_brand_id" string="Brand"/>
+             <field name="payment_type" string="Payment Type"/>
+    </xpath>
+        </field>
+    </record>
+    
+    <!-- Inherit account.move form view to modify invoice lines -->
+<record id="view_move_form_inherit_brand" model="ir.ui.view">
+    <field name="name">account.move.form.inherit.brand</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+        <!-- Add payment type field -->
+        <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="payment_type" string="Payment Type"/>
+        </xpath>
+        <!-- Add brand to invoice lines -->
+        <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='quantity']" position="after">
+            <!-- <field name="product_brand_id" string="Brand" readonly="1"/> -->
+            <field name="payment_type"/>
+        </xpath>
+    </field>
+</record>
+
+
+
+</odoo>

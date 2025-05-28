@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="view_pos_order_tree" model="ir.ui.view">
+    <field name="name">pos.order.tree</field>
+    <field name="model">pos.order</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="amount_total"/>
+            <field name="date_order"/>
+            <field name="state"/>
+            <field name="custom_note"/> <!-- Assuming custom_note is a field on pos.order -->
+        </tree>
+    </field>
+</record>
+
+</odoo>

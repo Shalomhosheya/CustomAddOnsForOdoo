@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record model="ir.ui.view" id="view_hospital_patient_tree">
+            <field name="name">Hospital.patient.tree</field>
+            <field name="model">hospital_management_system.patient</field>
+            <field name="arch" type="xml">
+                <tree string="Patients">
+                    <field name="name"/>
+                    <field name="age" optional="show"/>
+                    <field name="gender" optional="hide"/>
+                </tree>
+            </field>
+</record>
+<record model="ir.ui.view" id="view_hospital_patient_form">
+    <field name="name">Hospital.patient.form</field>
+    <field name="model">hospital_management_system.patient</field>
+    <field name="arch" type="xml">
+        <form string="Patients">
+            <sheet>
+              <group>
+               <group>
+                 <field name="name"/>
+                 <field name="age"/>
+                 <field name="email"/>
+               </group>
+               <group>
+                 <field name="gender"/>
+                 <field name="tag_ids" widget="many2many_tags"/>
+               </group>
+             </group>
+            </sheet>
+            <sheet>
+            <group>
+               <field name="phone_number"/>
+               <field name="address"/>
+               <field name="image"/>
+               <field name="nic_number"/>
+
+
+            </group>
+            </sheet>
+            <sheet>
+              
+             <div class="oe_chatter">
+               <field name="message_follower_ids" groups="base.group_user"/>
+               <field name="message_ids" />
+             </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+ <record id="action_hos_patient" model="ir.actions.act_window">
+    <field name="name">Patients</field>
+    <field name="res_model">hospital_management_system.patient</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+     <p class="o_view_nocontent_create">
+       create a new patient
+     </p>
+    </field>
+ </record>
+</odoo>

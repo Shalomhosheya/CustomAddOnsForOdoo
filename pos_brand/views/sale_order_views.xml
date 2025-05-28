@@ -1,0 +1,31 @@
+<odoo>
+  <record id="view_order_form_custom" model="ir.ui.view">
+    <field name="name">sale.order.form.custom</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>  <!-- Inherit the default sale order form -->
+    <field name="arch" type="xml">
+
+      <!-- Example: Add a new field below the customer -->
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="custom_note"/>
+        <field name="payment_type"/>
+        <field name="invoice_type"/>
+
+      </xpath>
+
+      <!-- Example: Remove the validity date -->
+      <xpath expr="//field[@name='validity_date']" position="replace"/>
+
+    </field>
+  </record>
+  <record id="action_POS_order" model="ir.actions.act_window">
+    <field name="name">POS Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first POS Order
+            </p>
+        </field>
+  </record>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_management_system_patient,hospital_management_system.patient,model_hospital_management_system_patient,base.group_user,1,1,1,1
+access_hospital_management_system_appointment,hospital_management_system.appointment,model_hospital_management_system_appointment,base.group_user,1,1,1,1
+access_patient_tag.access.patient.tag,model patient tag,model_patient_tag,base.group_user,1,1,1,1
+access_calendar_event_patient_id,access.calendar.event.patient_id,model_calendar_event,,1,1,1,1

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- QWeb Report Template -->
+    <template id="report_appointment_receipt" t-name="hospital_management_system.report_appointment_receipt_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="appointment">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Appointment Receipt</h2>
+                        <p><strong>Reference:</strong> <span t-field="appointment.reference"/></p>
+                        <p><strong>Patient:</strong> <span t-field="appointment.patient_id.name"/></p>
+                        <p><strong>Date:</strong> <span t-field="appointment.date_appointment"/></p>
+                        <p><strong>Duration:</strong> <span t-field="appointment.duration"/> hours</p>
+                        <p><strong>Amount Paid:</strong>
+                            <span t-field="appointment.amount_paid"
+                                  t-options='{"widget": "monetary", "display_currency": "appointment.currency_id"}'/>
+                        </p>
+                        <p><strong>Note:</strong> <span t-field="appointment.note"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+     
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <record id="action_cf_customer" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cf.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="model_new_shop_customer" model="ir.model">
+     <field name="name">new_shop.customer</field>
+     <field name="model">new_shop.customer</field>
+     <field name="state">base</field>
+    </record>
+    
+</odoo>
